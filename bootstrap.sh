@@ -16,7 +16,8 @@ git submodule update
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "README.md" -av . ~
+  rsync --exclude ".git/" --exclude "gitprompt/" --exclude ".DS_Store" --exclude "bootstrap.sh" --exclude "README.md" -av . ~
+  cp gitprompt/git-prompt.sh ~/.git-prompt.sh
 fi
 source "$HOME/.bash_profile"
 notice "Done.."
