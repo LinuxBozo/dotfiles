@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/jquery.vim"]
 	path = .vim/bundle/jquery.vim
 	url = git://github.com/itspriddle/vim-jquery.git
+[submodule "gitprompt"]
+	path = gitprompt
+	url = git://github.com/lvv/git-prompt.git
