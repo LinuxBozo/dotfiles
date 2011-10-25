@@ -23,11 +23,13 @@ To update, `cd` into your local `dotfiles` repository and then:
 
 ## Scripts
 Useful scripts included
+
 * ack (like super grep)
 * bookmarklet
 
 ## Configs
 Sensible defaults for:
+
 * git
 * vim
 * ack
