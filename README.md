@@ -1,4 +1,6 @@
-# LinuxBozo's dotfiles (mainly for osx)
+# LinuxBozo's dotfiles 
+* Designed with OSX in mind
+* Targetted mainly toward python/groovy/grails development
 
 ## Installation
 
@@ -11,12 +13,24 @@ When setting up a new Mac, you may want to set some sensible OS X defaults:
 ```bash
 ./.osx
 ```
+And definitely, you'll want to grab [Homebrew](http://mxcl.github.com/homebrew/)
 
 To update, `cd` into your local `dotfiles` repository and then:
 
 ```bash
 ./bootstrap.sh
 ```
+
+## Scripts
+Useful scripts included
+* ack (like super grep)
+* bookmarklet
+
+## Configs
+Sensible defaults for:
+* git
+* vim
+* ack
 
 ## Thanks to…
 * [Mathias Bynens](http://myths.be/dotfiles)
