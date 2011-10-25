@@ -1,6 +1,7 @@
 # LinuxBozo's dotfiles 
 * Designed with OSX in mind
 * Targetted mainly toward python/groovy/grails development
+* Assumes you work with git and svn
 
 ## Installation
 
@@ -35,6 +36,7 @@ Sensible defaults for:
 * ack
 
 ## Thanks to…
+* [git prompt folks](http://volnitsky.com/project/git-prompt/)
 * [Mathias Bynens](http://myths.be/dotfiles)
 * [Gianni Chiappetta](http://gf3.ca/) for sharing his [amazing collection of dotfiles](https://github.com/gf3/dotfiles)
 * [Matijs Brinkhuis](http://hotfusion.nl/) and his [homedir repository](https://github.com/matijs/homedir)
