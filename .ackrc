@@ -1,0 +1,12 @@
+--ignore-dir=.svn
+--ignore-dir=.grails
+--ignore-dir=.groovy
+--ignore-dir=.git
+--ignore-dir=.ivy2
+--ignore-dir=.Trash
+--ignore-dir=log
+--ignore-dir=tmp
+--ignore-dir=vendor
+--ignore-dir=public/generated
+--sort-files
+-a
