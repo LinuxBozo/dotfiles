@@ -3,17 +3,18 @@ function md() {
   mkdir -p "$@" && cd "$@"
 }
 
-# Test if HTTP compression (RFC 2616 + SDCH) is enabled for a given URL.
-# Send a fake UA string for sites that sniff it instead of using the Accept-Encoding header. (Looking at you, ajax.googleapis.com!)
-function httpcompression() {
-  encoding="$(curl -LIs -H 'User-Agent: Mozilla/5 Gecko' -H 'Accept-Encoding: gzip,deflate,compress,sdch' "$1" | grep '^Content-Encoding:')" && echo "$1 is encoded using ${encoding#* }" || echo "$1 is not using any encoding"
+# Image width
+width () {
+  echo $(sips -g pixelWidth $1 | grep -oE "[[:digit:]]{1,}$")
 }
 
-function json() {
-  python -mjson.tool <<< "$*" | pygmentize -l javascript
+# Image height
+height () {
+  echo $(sips -g pixelHeight $1 | grep -oE "[[:digit:]]{1,}$")
 }
 
-# All the dig info
-function digga() {
-  dig +nocmd "$1" any +multiline +noall +answer
+# All the dig info, 'cause I can never remember it
+digga () {
+  dig +nocmd $1 any +multiline +noall +answer
 }
+
