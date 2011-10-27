@@ -309,6 +309,9 @@ function diff-to-backup () {(
 	done;
 )}
 
+# mount the android file image
+function mountAndroid { hdiutil attach /usr/local/java/AndroidWorkspace.sparseimage -mountpoint /Volumes/AndroidWorkspace; }
+
 # Processes
 # -----------------------------------------------------------------------------
 # Show a one-line process tree of the given process, defaulting to the current
