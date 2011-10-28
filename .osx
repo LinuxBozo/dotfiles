@@ -146,6 +146,9 @@ chflags nohidden ~/Library
 # Disable local Time Machine backups
 # hash tmutil &> /dev/null && sudo tmutil disablelocal
 
+# Show unsupport Time Machine network volumes
+defaults write com.apple.systempreferences TMShowUnsupportedNetworkVolumes 1
+
 # Fix for the ancient UTF-8 bug in QuickLook (http://mths.be/bbo)
 # Commented out, as this is known to cause problems when saving files in Adobe Illustrator CS5 :(
 #echo "0x08000100:0" > ~/.CFUserTextEncoding
