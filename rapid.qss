@@ -1,0 +1,127 @@
+// This file is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; version 2 of the License.
+
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+
+// You should have received a copy of the GNU General Public License
+// along with this file.  If not, see <http://www.gnu.org/licenses/>.
+
+// Copyright (C) Darren Nolan 2010
+
+// Black background, grey text.
+ChatLine {
+  foreground: #B1A9B4;
+  background: #000000;
+}
+
+ChatLine[label="selected"] {
+  foreground: palette(highlighted-text);
+  background: palette(highlight);
+}
+
+ChatLine[label="highlight"] {
+  foreground: #B1A9B4;
+  background: #000000;
+}
+
+// Make the persons name bright yellow if they say your name.
+ChatLine::sender#plain[label="highlight"] { foreground: #FFFF00;}
+
+// My nickname will always be solid white.
+ChatLine::sender#plain[sender="self"] { foreground: #FFFFFF; }
+
+// Everyone else's name - something random.
+// Colors taken from Jussi's Dark Scheme Theme.
+// TODO - Make these colors closer to what was previously had on IRSSI
+ChatLine::sender#plain[sender="00"] { foreground: #e90d7f; }
+ChatLine::sender#plain[sender="01"] { foreground: #8e55e9; }
+ChatLine::sender#plain[sender="02"] { foreground: #b30e0e; }
+ChatLine::sender#plain[sender="03"] { foreground: #17b339; }
+ChatLine::sender#plain[sender="04"] { foreground: #58afb3; }
+ChatLine::sender#plain[sender="05"] { foreground: #9d54b3; }
+ChatLine::sender#plain[sender="06"] { foreground: #b39775; }
+ChatLine::sender#plain[sender="07"] { foreground: #3176b3; }
+ChatLine::sender#plain[sender="08"] { foreground: #9C0955; }
+ChatLine::sender#plain[sender="09"] { foreground: #5F399C; }
+ChatLine::sender#plain[sender="0a"] { foreground: #660808; }
+ChatLine::sender#plain[sender="0b"] { foreground: #0D6620; }
+ChatLine::sender#plain[sender="0c"] { foreground: #326466; }
+ChatLine::sender#plain[sender="0d"] { foreground: #593066; }
+ChatLine::sender#plain[sender="0e"] { foreground: #665643; }
+ChatLine::sender#plain[sender="0f"] { foreground: #1C4366; }
+
+
+ChatLine::timestamp {
+  foreground: #B1A9B4;
+}
+
+ChatLine::url {
+  foreground: #FFFFFF;
+  font-style: underline;
+}
+
+Palette {
+  marker-line: red;
+}
+
+// mIRC colors
+ChatLine[fg-color="00"] { foreground: #000000; }
+ChatLine[bg-color="00"] { background: #000000; }
+ChatLine[fg-color="01"] { foreground: #000000; }
+ChatLine[bg-color="01"] { background: #000000; }
+ChatLine[fg-color="02"] { foreground: #000080; }
+ChatLine[bg-color="02"] { background: #000080; }
+ChatLine[fg-color="03"] { foreground: #008000; }
+ChatLine[bg-color="03"] { background: #008000; }
+ChatLine[fg-color="04"] { foreground: #ff0000; }
+ChatLine[bg-color="04"] { background: #ff0000; }
+ChatLine[fg-color="05"] { foreground: #800000; }
+ChatLine[bg-color="05"] { background: #800000; }
+ChatLine[fg-color="06"] { foreground: #800080; }
+ChatLine[bg-color="06"] { background: #800080; }
+ChatLine[fg-color="07"] { foreground: #ffa500; }
+ChatLine[bg-color="07"] { background: #ffa500; }
+ChatLine[fg-color="08"] { foreground: #ffff00; }
+ChatLine[bg-color="08"] { background: #ffff00; }
+ChatLine[fg-color="09"] { foreground: #00ff00; }
+ChatLine[bg-color="09"] { background: #00ff00; }
+ChatLine[fg-color="0a"] { foreground: #008080; }
+ChatLine[bg-color="0a"] { background: #008080; }
+ChatLine[fg-color="0b"] { foreground: #00ffff; }
+ChatLine[bg-color="0b"] { background: #00ffff; }
+ChatLine[fg-color="0c"] { foreground: #4169e1; }
+ChatLine[bg-color="0c"] { background: #4169e1; }
+ChatLine[fg-color="0d"] { foreground: #ff00ff; }
+ChatLine[bg-color="0d"] { background: #ff00ff; }
+ChatLine[fg-color="0e"] { foreground: #808080; }
+ChatLine[bg-color="0e"] { background: #808080; }
+ChatLine[fg-color="0f"] { foreground: #c0c0c0; }
+ChatLine[bg-color="0f"] { background: #c0c0c0; }
+
+// mIRC formats
+ChatLine[format="bold"]      { font-weight: bold; }
+ChatLine[format="italic"]    { font-style: italic; }
+ChatLine[format="underline"] { font-style: underline; }
+
+// ChatView message colors
+ChatLine#notice { foreground: #916409; }
+// TODO - Change solid red on actions to whatever IRSSI was... I require my screen shots of my old setup :(
+ChatLine#action { foreground: #FF0000; }
+ChatLine#nick { foreground: #960096; }
+ChatLine#mode { foreground: #960096; }
+ChatLine#join { foreground: #960096; }
+ChatLine#part { foreground: #960096; }
+ChatLine#quit { foreground: #960096; }
+ChatLine#kick { foreground: #960096; }
+ChatLine#kill { foreground: #960096; }
+ChatLine#server { foreground: #916409; }
+ChatLine#info { foreground: #916409; }
+ChatLine#error { foreground: #916409; }
+ChatLine#daychange { foreground: #916409; }
+ChatLine#topic { foreground: #960096; }
+ChatLine#netsplit-join { foreground: #960096; }
+ChatLine#netsplit-quit { foreground: #960096; }
