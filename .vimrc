@@ -10,6 +10,16 @@ colorscheme molokai
 " Enabled later, after Pathogen
 filetype off
 
+" Enhance command-line completion
+set wildmenu
+" Allow cursor keys in insert mode
+set esckeys
+" Optimize for fast terminal connections
+set ttyfast
+" Add the g flag to search/replace by default
+set gdefault
+" Use UTF-8 without BOM
+set encoding=utf-8 nobomb
 " Change mapleader
 let mapleader=","
 
