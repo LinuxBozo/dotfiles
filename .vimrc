@@ -106,8 +106,6 @@ if bufwinnr(1)
   map + <C-W>+
   map - <C-W>-
 endif
-
-" Better split switching (Ctrl-j, Ctrl-k, Ctrl-h, Ctrl-l)
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-H> <C-W>h
@@ -244,4 +242,3 @@ nnoremap <leader>rp :RainbowParenthesesToggle<CR>
 " Taglist Plus
 let Tlist_WinWidth='auto'
 nnoremap <leader>l :TlistToggle<CR>
-

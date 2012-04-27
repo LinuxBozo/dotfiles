@@ -2,8 +2,13 @@
 "
 " Author: Tomas Restrepo <tomas@winterdom.com>
 "
+<<<<<<< HEAD
 " Note: Based on the monokai theme for textmate
 " by Wimer Hazenberg and its darker variant 
+=======
+" Note: Based on the monokai theme for TextMate
+" by Wimer Hazenberg and its darker variant
+>>>>>>> upstream/master
 " by Hamish Stuart Macpherson
 "
 
@@ -11,22 +16,39 @@ hi clear
 
 set background=dark
 if version > 580
+<<<<<<< HEAD
     " no guarantees for version 5.8 and below, but this makes it stop
     " complaining
     hi clear
     if exists("syntax_on")
         syntax reset
     endif
+=======
+	" no guarantees for version 5.8 and below, but this makes it stop
+	" complaining
+	hi clear
+	if exists("syntax_on")
+		syntax reset
+	endif
+>>>>>>> upstream/master
 endif
 let g:colors_name="molokai"
 
 if exists("g:molokai_original")
+<<<<<<< HEAD
     let s:molokai_original = g:molokai_original
 else
     let s:molokai_original = 0
 endif
 
 
+=======
+	let s:molokai_original = g:molokai_original
+else
+	let s:molokai_original = 0
+endif
+
+>>>>>>> upstream/master
 hi Boolean         guifg=#AE81FF
 hi Character       guifg=#E6DB74
 hi Number          guifg=#AE81FF
@@ -208,4 +230,8 @@ if &t_Co > 255
    hi CursorColumn                ctermbg=234
    hi LineNr          ctermfg=250 ctermbg=234
    hi NonText         ctermfg=250 ctermbg=234
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> upstream/master
