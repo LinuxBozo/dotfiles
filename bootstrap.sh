@@ -9,9 +9,7 @@ function error { echo "\033[1;31m=> Error: $1\033[0m"; }
 
 cd "$(dirname "$0")"
 notice "Updating.."
-git fetch upstream master
-git merge upstream/master
-git push origin master
+git pull --rebase origin master 
 git submodule init
 git submodule update
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
