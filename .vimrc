@@ -2,10 +2,11 @@
 set nocompatible
 
 " Set syntax highlighting options.
-set t_Co=256
-set background=dark 
-syntax on
-colorscheme molokai
+" set t_Co=256
+let g:solarized_termcolors=256
+colorscheme solarized
+set background=dark
+syntax enable
 
 " Enabled later, after Pathogen
 filetype off
@@ -97,7 +98,7 @@ set winminheight=0 "Allow splits to be reduced to a single line.
 set wrapscan " Searches wrap around end of file
 
 " Status Line
-hi User1 guibg=#455354 guifg=fg      ctermbg=238 ctermfg=fg  gui=bold,underline cterm=bold,underline term=bold,underline
+hi User1 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196 gui=bold,underline cterm=bold,underline term=bold,underline
 hi User2 guibg=#455354 guifg=#CC4329 ctermbg=238 ctermfg=196 gui=bold           cterm=bold           term=bold
 set statusline=[%n]\ %1*%<%.99t%*\ %2*%h%w%m%r%*%y[%{&ff}→%{strlen(&fenc)?&fenc:'No\ Encoding'}]%=%-16(\ L%l,C%c\ %)%P
 
@@ -117,9 +118,6 @@ map <C-L> <C-W>l
 
 " Sudo write (,W)
 noremap <leader>W :w !sudo tee %<CR>
-
-" Remap :W to :w
-command W w
 
 " Better mark jumping (line + col)
 nnoremap ' `
