@@ -24,9 +24,14 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   do
      if ! echo $excludes|grep $file > /dev/null
        then
-            ln -sf $CWD/$file ~   
+            if [ -e ~/$file ]
+            then
+              rm -rf ~/$file
+            fi
+            ln -sf $CWD/$file ~
        fi
   done
+  rm -rf ~/.git-prompt.sh
   ln -sf $CWD/gitprompt/git-prompt.sh ~/.git-prompt.sh
 fi
 source "$HOME/.bash_profile"
