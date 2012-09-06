@@ -191,10 +191,10 @@ set title
 " Show the (partial) command as it’s being typed
 set showcmd
 " Use relative line numbers
-if exists("&relativenumber")
-	set relativenumber
-	au BufReadPost * set relativenumber
-endif
+" if exists("&relativenumber")
+" set relativenumber
+" au BufReadPost * set relativenumber
+" endif
 
 " Remap keys for auto-completion, disable arrow keys
 inoremap <expr>  <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
