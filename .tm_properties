@@ -1,0 +1,58 @@
+# Global settings
+windowTitle         = "($TM_SCM_BRANCH) $TM_FILEPATH"
+exclude             = "{*.{o,pyc},Icon\r,CVS,_darcs,_MTN,\{arch\},blib,*~.nib}"
+include             = "{.tm_properties,.htaccess,.gitignore}"
+binary              = "{*.{icns,ico,jpg,jpeg,m4v,nib,o,pdf,png,psd,pyc,rtf,tif,tiff,xib},Icon\r}"
+
+fontName            = "Menlo"
+fontSize            = 13
+
+sellChecking        = true
+spellingLanguage    = 'en'
+showInvisibles      = true
+
+LANG                = "en_US.UTF-8"
+LC_CTYPE            = "en_US.UTF-8"
+TM_GRAILS           = "/usr/local/springsource/grails-1.3.7/bin/grails"
+TM_GIT              = "/usr/local/bin/git"
+
+# Specific overrides
+[ text ]
+softWrap            = false
+wrapColumn          = 80
+softTabs            = true
+tabSize             = 4
+
+[ source ]
+softWrap            = false
+wrapColumn          = 80
+softTabs            = true
+tabSize             = 4
+
+[ *.groovy ]
+fileType            = "source.groovy"
+
+[ text.html.markdown ]
+softWrap            = true
+wrapColumn          = "Use Window Frame"
+softTabs            = false
+
+[ text.plain ]
+softWrap            = true
+wrapColumn          = "Use Window Frame"
+softTabs            = false
+
+[ source.ruby ]
+tabSize             = 2
+
+[ source.plist ]
+softTabs            = false
+
+[ source.tm-properties ]
+spellChecking       = false
+
+[ "/System/Library/Frameworks/**/Headers/**/*" ]
+encoding            = "MACROMAN"
+
+[ "{BUILD,README,INSTALL,LICENSE,COPYING,TODO}" ]
+fileType            = "text.plain"
