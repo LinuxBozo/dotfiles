@@ -2,8 +2,7 @@
 set nocompatible
 
 " Set syntax highlighting options.
-" set t_Co=256
-let g:solarized_termcolors=256
+set t_Co=256
 colorscheme solarized
 set background=dark
 syntax enable
