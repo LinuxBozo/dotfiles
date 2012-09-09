@@ -1,0 +1,13 @@
+# Add to the $PATH
+
+# npm package manager for nodejs
+PATH="/usr/local/sharenpm/bin:$PATH"
+
+# homebrew in general
+PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+
+# home directory stuff
+PATH="$HOME/bin:$HOME/.scripts:$PATH"
+
+export PATH
+
