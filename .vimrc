@@ -1,45 +1,29 @@
-" Make Vim more useful
-set nocompatible
-
 " Set syntax highlighting options.
-set t_Co=256
-colorscheme solarized
-set background=dark
+let g:solarized_termtrans=0
 syntax enable
+set background=dark
+colorscheme solarized
 
 " Enabled later, after Pathogen
 filetype off
 
-" Use the OS clipboard by default (on versions compiled with `+clipboard`)
-set clipboard=unnamed
-" Enhance command-line completion
-set wildmenu
-" Allow cursor keys in insert mode
-set esckeys
-" Allow backspace in insert mode
-set backspace=indent,eol,start
-" Optimize for fast terminal connections
-set ttyfast
-" Add the g flag to search/replace by default
-set gdefault
-" Use UTF-8 without BOM
-set encoding=utf-8 nobomb
 " Change mapleader
 let mapleader=","
-
-" Local dirs
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
 
 " Set some junk
 set autoindent " Copy indent from last line when starting new line.
 set backspace=indent,eol,start
+set backupdir=~/.vim/backups
+set clipboard=unnamed " Use the OS clipboard by default (on versions compiled with `+clipboard`)
 set cursorline " Highlight current line
 set diffopt=filler " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
+set directory=~/.vim/swaps " Local dirs
 set encoding=utf-8 nobomb " BOM often causes trouble
 set esckeys " Allow cursor keys in insert mode.
 set expandtab " Expand tabs to spaces
+set exrc " Enable per-directory .vimrc files and disable unsafe commands in them
+set fcs=fold:-
 set foldcolumn=4 " Column to show folds
 set foldenable
 set foldlevel=2
@@ -63,8 +47,13 @@ set hlsearch " Highlight searches
 set ignorecase " Ignore case of searches.
 set incsearch " Highlight dynamically as pattern is typed.
 set laststatus=2 " Always show status line
+set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_ " Show “invisible” characters
+set list
 set magic " Enable extended regexes.
+set modeline " Respect modeline in files
+set modelines=4
 set mouse=a " Enable moouse in all in all modes.
+set nocompatible " Make Vim more useful
 set noerrorbells " Disable error bells.
 set nojoinspaces " Only insert single space after a '.', '?' and '!' with a join command.
 set nostartofline " Don't reset cursor to start of line when moving around.
@@ -74,8 +63,10 @@ set ofu=syntaxcomplete#Complete " Set omni-completion method.
 set report=0 " Show all changes.
 set ruler " Show the cursor position
 set scrolloff=3 " Start scrolling three lines before horizontal border of window.
+set secure
 set shiftwidth=2 " The # of spaces for indenting.
 set shortmess=atI " Don't show the intro message when starting vim.
+set showcmd " Show the (partial) command as it’s being typed
 set showmode " Show the current mode.
 set showtabline=2 " Always show tab bar.
 set sidescrolloff=3 " Start scrolling three columns before vertical border of window.
@@ -85,6 +76,7 @@ set softtabstop=2 " Tab key results in 2 spaces
 set splitbelow " New window goes below
 set splitright " New windows goes right
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
+set tabstop=4 " Make tabs as wide as four spaces
 set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
 set ttymouse=xterm " Set mouse type to xterm.
@@ -121,16 +113,7 @@ noremap <leader>W :w !sudo tee %<CR>
 " Better mark jumping (line + col)
 nnoremap ' `
 
-" Hard to type things
-imap >> →
-imap << ←
-imap ^^ ↑
-imap VV ↓
-imap aa λ
-
 " Toggle show tabs and trailing spaces (,c)
-set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
-set fcs=fold:-
 nnoremap <silent> <leader>c :set nolist!<CR>
 
 " Clear last search (,qs)
@@ -145,53 +128,6 @@ if &term == "xterm-ipad"
   inoremap <Tab> <Esc>`^
   inoremap <Leader><Tab> <Tab>
 endif
-
-" Respect modeline in files
-set modeline
-set modelines=4
-" Enable per-directory .vimrc files and disable unsafe commands in them
-set exrc
-set secure
-" Enable line numbers
-set number
-" Enable syntax highlighting
-syntax on
-" Highlight current line
-set cursorline
-" Make tabs as wide as two spaces
-set tabstop=2
-" Show “invisible” characters
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
-set list
-" Highlight searches
-set hlsearch
-" Ignore case of searches
-set ignorecase
-" Highlight dynamically as pattern is typed
-set incsearch
-" Always show status line
-set laststatus=2
-" Enable mouse in all modes
-set mouse=a
-" Disable error bells
-set noerrorbells
-" Don’t reset cursor to start of line when moving around.
-set nostartofline
-" Show the cursor position
-set ruler
-" Don’t show the intro message when starting Vim
-set shortmess=atI
-" Show the current mode
-set showmode
-" Show the filename in the window titlebar
-set title
-" Show the (partial) command as it’s being typed
-set showcmd
-" Use relative line numbers
-" if exists("&relativenumber")
-" set relativenumber
-" au BufReadPost * set relativenumber
-" endif
 
 " Remap keys for auto-completion, disable arrow keys
 inoremap <expr>  <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
@@ -208,11 +144,6 @@ nnoremap <leader>[ <i{<CR>
 " Paste toggle (,p)
 set pastetoggle=<leader>p
 map <leader>p :set invpaste paste?<CR>
-
-" NERD Commenter
-let NERDSpaceDelims=1
-let NERDCompactSexyComs=1
-let g:NERDCustomDelimiters = { 'racket': { 'left': ';', 'leftAlt': '#|', 'rightAlt': '|#' } }
 
 " Buffer navigation (,,) (,]) (,[) (,ls)
 map <Leader>, <C-^>
@@ -239,10 +170,6 @@ function! StripWhitespace ()
 endfunction
 noremap <leader>ss :call StripWhitespace ()<CR>
 
-" Save and restore folds
-" :au BufWinLeave * mkview
-" :au BufWinEnter * silent loadview
-
 " Fix page up and down
 map <PageUp> <C-U>
 map <PageDown> <C-D>
@@ -255,15 +182,13 @@ autocmd BufReadPost *
   \   exe "normal! g`\"" |
   \ endif
 
-
-" Emulate bundles, allow plugins to live independantly. Easier to manage.
-call pathogen#runtime_append_all_bundles()
-filetype plugin indent on
-
 " Markdown
 augroup mkd
   autocmd BufRead *.mkd  set ai formatoptions=tcroqn2 comments=n:>
 augroup END
+
+" Gradle
+au BufRead,BufNewFile *.gradle set ft=gradle syntax=groovy
 
 " JSON
 au BufRead,BufNewFile *.json set ft=json syntax=javascript
@@ -284,9 +209,7 @@ au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 let g:ctrlp_working_path_mode = 2
 let g:ctrlp_mru_files = 1
 
-" Rainbow Parenthesis
-nnoremap <leader>rp :RainbowParenthesesToggle<CR>
+" Emulate bundles, allow plugins to live independantly. Easier to manage.
+call pathogen#runtime_append_all_bundles()
+filetype plugin indent on
 
-" Taglist Plus
-let Tlist_WinWidth='auto'
-nnoremap <leader>l :TlistToggle<CR>
