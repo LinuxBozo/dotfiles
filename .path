@@ -1,7 +1,10 @@
 # Add to the $PATH
 
+# ruby gems
+PATH="/usr/local/Cellar/ruby/1.9.3-p194/bin:$PATH"
+
 # npm package manager for nodejs
-PATH="/usr/local/sharenpm/bin:$PATH"
+PATH="/usr/local/share/npm/bin:$PATH"
 
 # homebrew in general
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
