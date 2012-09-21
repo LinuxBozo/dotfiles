@@ -883,3 +883,14 @@ function unquarantine() {
 		xattr -r -d "$attribute" "$@"
 	done
 }
+
+function flushdns() {
+  sudo launchctl unload /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
+  echo -n "mDNS unloading..."
+  sleep 5
+  echo " [done]"
+  sudo launchctl load /System/Library/LaunchDaemons/com.apple.mDNSResponder.plist
+  echo -n "mDNS loading....."
+  sleep 5
+  echo " [done]"
+}
