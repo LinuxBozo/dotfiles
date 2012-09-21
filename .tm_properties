@@ -1,7 +1,9 @@
 # Global settings
-windowTitle         = "($TM_SCM_BRANCH) $TM_FILEPATH"
+windowTitleSCM = '${TM_SCM_BRANCH:+ ($TM_SCM_NAME: $TM_SCM_BRANCH)}'¬
+windowTitle    = '$TM_DISPLAYNAME$windowTitleSCM'¬
+# windowTitle         = "($TM_SCM_BRANCH) $TM_FILEPATH"
 exclude             = "{*.{o,pyc},Icon\r,CVS,_darcs,_MTN,\{arch\},blib,*~.nib}"
-include             = "{.tm_properties,.htaccess,.gitignore}"
+include             = "{*,.tm_properties,.htaccess,.gitignore}"
 binary              = "{*.{icns,ico,jpg,jpeg,m4v,nib,o,pdf,png,psd,pyc,rtf,tif,tiff,xib},Icon\r}"
 
 fontName            = "Menlo"
