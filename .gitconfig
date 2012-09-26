@@ -1,6 +1,6 @@
 [user]
-        name = M. Adam Kendall
-        email = linuxbozo@gmail.com
+	name = M. Adam Kendall
+	email = linuxbozo@gmail.com
 
 [alias]
 	# View the SHA, description, and history graph of the latest 20 commits
@@ -90,3 +90,9 @@
 	pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
