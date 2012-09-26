@@ -29,8 +29,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
             ln -sf $CWD/$file $HOME/$file
        fi
   done
+  # Treat the following a little different
   rm -rf $HOME/.git-prompt.sh
   ln -sf $CWD/gitprompt/git-prompt.sh $HOME/.git-prompt.sh
+  rm -rf $HOME/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
+  ln -sf $CWD/sublime2/Preferences.sublime-settings $HOME/Library/Application\ Support/Sublime\ Text\ 2/Packages/User/Preferences.sublime-settings
+
 fi
 source "$HOME/.bash_profile"
 notice "Done.."
