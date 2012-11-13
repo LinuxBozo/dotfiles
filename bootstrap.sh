@@ -36,11 +36,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   SUBL_TARGET="$HOME/Library/Application\ Support/Sublime\ Text\ 2/Packages/User"
   for file in `ls -A $SUBL_SRC`
   do
-    if [ -e $SUBL_TARGET/$file ]
+    if [ -e "$SUBL_TARGET/$file" ]
     then
-      rm -rf $SUBL_TARGET/$file
+      rm -rf "$SUBL_TARGET/$file"
     fi
-    ln -sf $SUBL_SRC/$file $SUBL_TARGET/$file
+    ln -sf "$SUBL_SRC/$file" "$SUBL_TARGET/$file"
   done
 fi
 source "$HOME/.bash_profile"
