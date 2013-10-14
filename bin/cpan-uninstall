@@ -1,0 +1,19 @@
+#!/usr/bin/perl
+use 5.010;
+use ExtUtils::Installed qw();
+use ExtUtils::Packlist qw();
+
+die "Usage: $0 Module::Name Module::Name\n" unless @ARGV;
+
+for my $mod (@ARGV) {
+    my $inst = ExtUtils::Installed->new;
+
+    foreach my $item (sort($inst->files($mod))) {
+        say "removing $item";
+        unlink $item or warn "could not remove $item: $!\n";
+    }
+
+    my $packfile = $inst->packlist($mod)->packlist_file;
+    print "removing $packfile\n";
+    unlink $packfile or warn "could not remove $packfile: $!\n";
+}
