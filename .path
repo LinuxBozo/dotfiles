@@ -17,9 +17,17 @@ export GRAILS_HOME='/usr/local/springsource/grails-1.3.7'
 export GROOVY_HOME="$(brew --prefix groovy)/libexec"
 export ANDROID_HOME='/usr/local/java/android-sdk-macosx'
 export ANDROID_NDK_HOME='/usr/local/java/android-ndk-r9'
+export ORACLE_HOME='/usr/local/oracle'
+export SONAR_RUNNER_HOME='/usr/local/sonar/sonar-runner-2.3'
+export AIR_HOME='/usr/local/AIRSDK_compiler'
 
 PATH=$PATH:$GRAILS_HOME/bin
 PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_NDK_HOME
 PATH=$PATH:$GOPATH/bin
+PATH=$PATH:$ORACLE_HOME
+PATH=$PATH:$SONAR_RUNNER_HOME/bin
+PATH=$PATH:$AIR_HOME/bin
 
 export PATH
+
+source $(brew --prefix nvm)/nvm.sh

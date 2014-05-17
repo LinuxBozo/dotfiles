@@ -15,3 +15,6 @@ export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL=ignoredups
 # Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+
+export HOMEBREW_GITHUB_API_TOKEN=8f5ee5b6a18ee4fc33ea7456f287a707fc7aaba7
+export MAVEN_OPTS="-Xmx768m -XX:MaxPermSize=256m"
