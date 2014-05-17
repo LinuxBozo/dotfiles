@@ -8,9 +8,9 @@ if [ -z "$GRAILS_HOME" -o ! -d "$GRAILS_HOME" ]; then
 fi
 
 # From: https://github.com/alxndrsn/grails.sh/blob/master/dirname
-dirname() 
+dirname()
 {
-	echo $1 | sed -e "s/[^\/\\]*$//" -e "s/^$/./"	
+	echo $1 | sed -e "s/[^\/\\]*$//" -e "s/^$/./"
 }
 
 # Extract the default version and base path from GRAILS_HOME
@@ -18,13 +18,14 @@ DEFAULT_VERSION=`basename $GRAILS_HOME | cut -f 2 -d "-"`
 BASE_GRAILS_PATH=`dirname $GRAILS_HOME`
 APP_PROP="application.properties"
 DOWNLOAD_BASE_URL="http://dist.springframework.org.s3.amazonaws.com/release/GRAILS"
+OLD_DOWNLOAD_BASE_URL="http://dist.codehaus.org/grails"
 
 # Try to get the version from the command line
 TRY_VERSION=$1
 if [[ $TRY_VERSION =~ [0-9]\.[0-9]\.[0-9] ]]; then
 	VERSION=$TRY_VERSION
 	shift
-fi 
+fi
 
 # Or else get the version from the application.properties in the current directory
 [ -z "$VERSION" -a -f "$APP_PROP" ] &&
@@ -38,8 +39,12 @@ export GRAILS_HOME=${BASE_GRAILS_PATH}/grails-${VERSION}
 
 # Attempt to download and unzip the specified version if it does not exist
 if [ ! -d ${GRAILS_HOME} ]; then
-        NEW_GRAILS_FILE=grails-${VERSION}
-        echo "grails ${VERSION} does not exist, attempting to download..."
+		NEW_GRAILS_FILE=grails-${VERSION}
+        FILE_EXISTS_OLD_LOCATION=`curl -o /dev/null --silent --head --write-out '%{http_code}' ${OLD_DOWNLOAD_BASE_URL}/${NEW_GRAILS_FILE}.zip`
+		if [ $FILE_EXISTS_OLD_LOCATION = "200" ]; then
+			DOWNLOAD_BASE_URL=${OLD_DOWNLOAD_BASE_URL}
+		fi
+        echo "grails ${VERSION} does not exist, attempting to download from ${DOWNLOAD_BASE_URL}..."
         curl "${DOWNLOAD_BASE_URL}/${NEW_GRAILS_FILE}.zip" -o ${NEW_GRAILS_FILE}.zip
         unzip ./${NEW_GRAILS_FILE}.zip -d ${BASE_GRAILS_PATH}/
         rm -r ${NEW_GRAILS_FILE}.zip
