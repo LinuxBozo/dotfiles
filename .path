@@ -27,6 +27,7 @@ PATH=$PATH:$GOPATH/bin
 PATH=$PATH:$ORACLE_HOME
 PATH=$PATH:$SONAR_RUNNER_HOME/bin
 PATH=$PATH:$AIR_HOME/bin
+PATH=$PATH:/usr/local/heroku/bin
 
 export PATH
 
