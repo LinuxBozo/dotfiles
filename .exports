@@ -18,4 +18,6 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
 
 export HOMEBREW_GITHUB_API_TOKEN=8f5ee5b6a18ee4fc33ea7456f287a707fc7aaba7
 export MAVEN_OPTS="-Xmx768m -XX:MaxPermSize=256m"
-export NVM_DIR=~/.nvm
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
