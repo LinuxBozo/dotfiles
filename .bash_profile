@@ -6,11 +6,20 @@ for file in ~/.{exports,path,bash_prompt,aliases,functions,extra}; do
 done
 unset file
 
+# Update window size after every command
+shopt -s checkwinsize
+# Save multi-line commands as one command
+shopt -s cmdhist
+
 # Append to the Bash history file, rather than overwriting it
 shopt -s histappend
 
+# Prepend cd to directory names automatically
+shopt -s autocd 2> /dev/null
+# Correct spelling errors during tab-completion
+shopt -s dirspell
 # Autocorrect typos in path names when using `cd`
-shopt -s cdspell
+shopt -s cdspell 2> /dev/null
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
