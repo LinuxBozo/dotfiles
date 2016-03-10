@@ -31,6 +31,8 @@
     undo = reset --hard
     # Undo a `git push`
     undopush = push -f origin HEAD^:master
+    # update origin branch from upstream
+    update = !"u() { git checkout $1; git pull upstream $1; git push origin $1; }; u"
 
 [apply]
     # Detect whitespace errors when applying a patch
