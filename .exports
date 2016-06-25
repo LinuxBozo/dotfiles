@@ -2,6 +2,9 @@
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
+# Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
+export PYTHONIOENCODING='UTF-8';
+
 # Make vim the default editor
 export EDITOR="vim"
 # Don’t clear the screen after quitting a manual page
@@ -17,6 +20,13 @@ export HISTFILESIZE=$HISTSIZE
 export HISTCONTROL="erasedups:ignoreboth"
 # Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:&:[ ]*:exit:ls:bg:fg:history:clear"
+
+# Enable persistent REPL history for `node`.
+export NODE_REPL_HISTORY=~/.node_history;
+# Allow 32³ entries; the default is 1000.
+export NODE_REPL_HISTORY_SIZE='32768';
+# Use sloppy mode by default, matching web browsers.
+export NODE_REPL_MODE='sloppy';
 
 export MAVEN_OPTS="-Xmx768m -XX:MaxPermSize=256m"
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
