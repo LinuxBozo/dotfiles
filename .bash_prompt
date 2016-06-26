@@ -60,10 +60,7 @@ prompt_git() {
     # Check if the current directory is in a Git repository.
     if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]; then
 
-        unset branchName status modified added clean init added mixed untracked op detached
-        added_files=()
-        modified_files=()
-        untracked_files=()
+        unset branchName status modified added clean init added mixed untracked op detached freshness
         git_dir=`git rev-parse --git-dir 2> /dev/null`
 
         # check if the current directory is in .git before running git checks
@@ -75,16 +72,19 @@ prompt_git() {
             # Check for uncommitted changes in the index.
             if ! $(git diff --quiet --ignore-submodules --cached); then
                 s+='+';
+                added=added;
             fi;
 
             # Check for unstaged changes.
             if ! $(git diff-files --quiet --ignore-submodules --); then
                 s+='!';
+                modified=modified;
             fi;
 
             # Check for untracked files.
             if [ -n "$(git ls-files --others --exclude-standard)" ]; then
                 s+='?';
+                untracked=untracked;
             fi;
 
             # Check for stashed files.
@@ -141,25 +141,13 @@ prompt_git() {
         freshness="${white}="
         eval " $(
             LANG=C git status 2>/dev/null |
-                gsed -n '
+                sed -n '
                     s/^\(# \)*On branch /branch=/p
                     s/^nothing to commi.*/clean=clean/p
                     s/^\(# \)*Initial commi.*/init=init/p
-                    s/^\(# \)*Your branch is ahead of \(.\).\+\1 by [[:digit:]]\+ commit.*/freshness=${yellow}↑/p
-                    s/^\(# \)*Your branch is behind \(.\).\+\1 by [[:digit:]]\+ commit.*/freshness=${red}↓/p
+                    s/^\(# \)*Your branch is ahead of.*/freshness=${yellow}↑/p
+                    s/^\(# \)*Your branch is behind.*/freshness=${violet}↓/p
                     s/^\(# \)*Your branch and \(.\).\+\1 have diverged.*/freshness=${orange}↕/p
-                '
-        )"
-
-        eval " $(
-            LANG=C git status --porcelain 2>/dev/null |
-                gsed -n '
-                    s,^[MARC]. \([^\"][^/]*/\?\).*,         added=added;           [[ \" ${added_files[@]} \"      =~ \" \1 \" ]]   || added_files[${#added_files[@]}]=\"\1\",p
-                    s,^[MARC]. \"\([^/]\+/\?\).*\"$,        added=added;           [[ \" ${added_files[@]} \"      =~ \" \1 \" ]]   || added_files[${#added_files[@]}]=\"\1\",p
-                    s,^.[MAU] \([^\"][^/]*/\?\).*,          modified=modified;     [[ \" ${modified_files[@]} \"   =~ \" \1 \" ]]   || modified_files[${#modified_files[@]}]=\"\1\",p
-                    s,^.[MAU] \"\([^/]\+/\?\).*\"$,         modified=modified;     [[ \" ${modified_files[@]} \"   =~ \" \1 \" ]]   || modified_files[${#modified_files[@]}]=\"\1\",p
-                    s,^?? \([^\"][^/]*/\?\).*,              untracked=untracked;   [[ \" ${untracked_files[@]} \"  =~ \" \1 \" ]]   || untracked_files[${#untracked_files[@]}]=\"\1\",p
-                    s,^?? \"\([^/]\+/\?\).*\"$,             untracked=untracked;   [[ \" ${untracked_files[@]} \"  =~ \" \1 \" ]]   || untracked_files[${#untracked_files[@]}]=\"\1\",p
                 '
         )"
 
