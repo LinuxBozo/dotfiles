@@ -1,3 +1,5 @@
+# local stuff you don't want to commit
+.extra
 # backup files from vim
 *~
 .vim/backups
