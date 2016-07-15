@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+target=${1}
+environment=${2}
+
+if [ "$#" -ne 2 ]; then
+    echo
+    echo "Usage:"
+    echo "   jumpbox <target> <environment>"
+    exit 1
+fi
+
+trigger=$(fly -t ${target} trigger-job -j jumpbox/container-bosh-${environment})
+build=$(echo ${trigger} | sed 's/.*#\([0-9]\{1,\}\)/\1/')
+
+while ! containers=$(fly -t ${target} containers | grep "task" | grep "container-bosh-${environment}\s\{1,\}${build}\s")
+do
+  sleep 1
+done
+
+expect -c "spawn sh -c \"fly -t ${target} intercept -j jumpbox/container-bosh-${environment} -b ${build} -s jumpbox\";expect -re {(\d+): build \#$build, step: jumpbox, type: task};send \$expect_out(1,string)\r;interact"
