@@ -106,3 +106,7 @@
 	allowed = github.com.*/[A-Za-z0-9]{40}
 	allowed = sha.*[A-Za-z0-9]{40}
 	allowed = secure:.*
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
