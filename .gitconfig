@@ -1,96 +1,108 @@
 [user]
-    name = M. Adam Kendall
-    email = michael.kendall@gsa.gov
+	name = M. Adam Kendall
+	email = michael.kendall@gsa.gov
 
 [alias]
-    # View the SHA, description, and history graph of the latest 20 commits
-    l = log --pretty=oneline -n 20 --decorate --graph
-    # View the current working tree status using the short format
-    s = status -sb
-    # Show the diff between the latest commit and the current state
-    d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
-    # `git di $number` shows the diff between the state `$number` revisions ago and the current state
-    di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
-    # Pull in remote changes for the current repository and all its submodules
-    p = !"git pull; git submodule foreach git pull origin master"
-    # Clone a repository including all submodules
-    c = clone --recursive
-    # Commit all changes
-    ca = !git add -A && git commit -av
-    # Switch to a branch, creating it if necessary
-    switch = checkout -B
-    # Show verbose output about tags, branches or remotes
-    tags = tag -l
-    branches = branch -a
-    remotes = remote -v
-    # Credit an author on the latest commit
-    credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
-    # Interactive rebase with the given number of latest commits
-    reb = "!r() { git rebase -i HEAD~$1; }; r"
-    # Undo current commits
-    undo = reset --hard
-    # Undo a `git push`
-    undopush = push -f origin HEAD^:master
-    # update origin branch from upstream
-    update = !"u() { git checkout $1; git pull upstream $1; git push origin $1; }; u"
+	# View the SHA, description, and history graph of the latest 20 commits
+	l = log --pretty=oneline -n 20 --decorate --graph
+	# View the current working tree status using the short format
+	s = status -sb
+	# Show the diff between the latest commit and the current state
+	d = !"git diff-index --quiet HEAD -- || clear; git diff --patch-with-stat"
+	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
+	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
+	# Pull in remote changes for the current repository and all its submodules
+	p = !"git pull; git submodule foreach git pull origin master"
+	# Clone a repository including all submodules
+	c = clone --recursive
+	# Commit all changes
+	ca = !git add -A && git commit -av
+	# Switch to a branch, creating it if necessary
+	switch = checkout -B
+	# Show verbose output about tags, branches or remotes
+	tags = tag -l
+	branches = branch -a
+	remotes = remote -v
+	# Credit an author on the latest commit
+	credit = "!f() { git commit --amend --author \"$1 <$2>\" -C HEAD; }; f"
+	# Interactive rebase with the given number of latest commits
+	reb = "!r() { git rebase -i HEAD~$1; }; r"
+	# Undo current commits
+	undo = reset --hard
+	# Undo a `git push`
+	undopush = push -f origin HEAD^:master
+	# update origin branch from upstream
+	update = !"u() { git checkout $1; git pull upstream $1; git push origin $1; }; u"
+	# unstage a file
+	unstage = "!uns() { git reset HEAD -- $1; }; uns"
+	# unstage all files
+	unstage-all = reset HEAD --
 
 [apply]
-    # Detect whitespace errors when applying a patch
-    whitespace = fix
+	# Detect whitespace errors when applying a patch
+	whitespace = fix
 
 [core]
-    # Use custom `.gitignore` and `.gitattributes`
-    excludesfile = ~/.gitignore
-    attributesfile = ~/.gitattributes
-    autocrlf = input
-    quotepath = off
+	# Use custom `.gitignore` and `.gitattributes`
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
+	autocrlf = input
+	quotepath = off
+	hooksPath = /Users/michaelkendall/.git-secrets/hooks
 
 [color]
-    # Use colors in Git commands that are capable of colored output when outputting to the terminal
-    ui = auto
+	# Use colors in Git commands that are capable of colored output when outputting to the terminal
+	ui = auto
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 [merge]
-    # Include summaries of merged commits in newly created merge commit messages
-    log = true
+	# Include summaries of merged commits in newly created merge commit messages
+	log = true
 [push]
-  default = tracking
+	default = tracking
 [branch "master"]
-  remote = origin
-  merge = refs/heads/master
+	remote = origin
+	merge = refs/heads/master
 [branch "develop"]
-  remote = origin
-  merge = refs/heads/develop
+	remote = origin
+	merge = refs/heads/develop
 
 # URL shorthands
 [url "git@github.com:"]
-    insteadOf = "gh:"
-    pushInsteadOf = "github:"
-    pushInsteadOf = "git://github.com/"
+	insteadOf = "gh:"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
-    insteadOf = "github:"
+	insteadOf = "github:"
 [url "git@gist.github.com:"]
-    insteadOf = "gst:"
-    pushInsteadOf = "gist:"
-    pushInsteadOf = "git://gist.github.com/"
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
-    insteadOf = "gist:"
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+	insteadOf = "gist:"
 [diff]
 	compactionHeuristic = true
+[init]
+	templatedir = /Users/michaelkendall/.git-secrets
+[secrets]
+	providers = git secrets --aws-provider
+	patterns = [A-Z0-9]{20}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+	allowed = AKIAIOSFODNN7EXAMPLE
+	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+	providers = cat /Users/michaelkendall/.git-secrets/patterns
+	allowed = github.com.*/[A-Za-z0-9]{40}
+	allowed = sha.*[A-Za-z0-9]{40}
+	allowed = secure:.*
