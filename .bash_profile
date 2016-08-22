@@ -44,3 +44,14 @@ if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_c
 elif [ -f /etc/bash_completion ]; then
        source /etc/bash_completion;
 fi;
+
+# Parse gpg agent info
+if ! pgrep gpg-agent > /dev/null 2>&1; then
+  gpg-agent --daemon --enable-ssh-support --write-env-file $HOME/.gpg-agent-info
+fi
+if [ -f "$HOME/.gpg-agent-info" ]; then
+   . "$HOME/.gpg-agent-info"
+   export GPG_AGENT_INFO
+   export SSH_AUTH_SOCK
+   export SSH_AGENT_ID
+fi

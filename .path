@@ -1,4 +1,5 @@
 # Add to the $PATH
+export JAVA_HOME=$(/usr/libexec/java_home)
 export GRAILS_HOME='/usr/local/springsource/grails-1.3.7'
 export GROOVY_HOME="$(brew --prefix groovy)/libexec"
 export ANDROID_HOME='/usr/local/java/android-sdk-macosx'
@@ -18,6 +19,7 @@ PATH="$HOME/bin:$HOME/.scripts:$PATH"
 # ruby gems
 PATH="$(brew --prefix ruby)/bin:$PATH"
 
+PATH=$PATH:$JAVA_HOME/bin
 PATH=$PATH:$GOPATH/bin
 PATH=$PATH:$GOROOT/bin
 PATH=$PATH:$GRAILS_HOME/bin
@@ -27,6 +29,7 @@ PATH=$PATH:$SONAR_RUNNER_HOME/bin
 PATH=$PATH:$AIR_HOME/bin
 PATH=$PATH:/usr/local/heroku/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight # diff-highlight from git contrib
 
 export PATH
 

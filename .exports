@@ -35,3 +35,4 @@ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export GPG_TTY=$(tty)
