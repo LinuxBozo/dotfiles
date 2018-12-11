@@ -210,6 +210,6 @@ let g:ctrlp_working_path_mode = 2
 let g:ctrlp_mru_files = 1
 
 " Emulate bundles, allow plugins to live independantly. Easier to manage.
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 filetype plugin indent on
 
