@@ -38,6 +38,7 @@
 	unstage = "!uns() { git reset HEAD -- $1; }; uns"
 	# unstage all files
 	unstage-all = reset HEAD --
+	new = !git init && git symbolic-ref HEAD refs/heads/main
 
 [apply]
 	# Detect whitespace errors when applying a patch

@@ -9,6 +9,7 @@ export SONAR_RUNNER_HOME='/usr/local/sonar/sonar-runner-2.3'
 export AIR_HOME='/usr/local/AIRSDK_compiler'
 export GOPATH=$HOME/golang
 export GOROOT=$(brew --prefix go)/libexec
+export GEMPATH='/usr/local/lib/ruby/gems/2.7.0'
 
 # homebrew in general
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
@@ -22,6 +23,7 @@ PATH="$(brew --prefix ruby)/bin:$PATH"
 PATH=$PATH:$JAVA_HOME/bin
 PATH=$PATH:$GOPATH/bin
 PATH=$PATH:$GOROOT/bin
+PATH=$PATH:$GEMPATH/bin
 PATH=$PATH:$GRAILS_HOME/bin
 PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_NDK_HOME
 PATH=$PATH:$ORACLE_HOME

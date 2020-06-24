@@ -36,3 +36,13 @@ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export GPG_TTY=$(tty)
+
+# rbenv processing
+eval "$(rbenv init -)"
+
+# manage java versions
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
+# set the default keychain for aws-vault
+export AWS_VAULT_KEYCHAIN_NAME=login

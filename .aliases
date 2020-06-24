@@ -122,7 +122,7 @@ alias badge="tput bel"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "$method"="lwp-request -m '$method'"
+	alias "$method"="curl -sL -X '$method'"
 done
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
@@ -130,7 +130,12 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
-# AWS bits
-alias eastwest="export AWS_DEFAULT_PROFILE=ew"
-alias govcloud="export AWS_DEFAULT_PROFILE=default"
-
+alias dr-kube="export KUBECONFIG=~/.kube/prod-us-west-2.kubeconfig"
+alias prod-kube="export KUBECONFIG=~/.kube/prod-us-west-1.kubeconfig"
+alias np-kube="export KUBECONFIG=~/.kube/np-us-west-1.kubeconfig"
+alias simpleqa-kube="export KUBECONFIG=~/.kube/simple-qa.kubeconfig"
+alias simpleprod-kube="export KUBECONFIG=~/.kube/simple-prod.kubeconfig"
+alias eks-kube="export KUBECONFIG=~/.kube/eks-us-west-2.kubeconfig"
+alias crappaform="terraform"
+alias terraform-plan="terraform plan -lock=false"
+alias aws-mfa="aws-vault exec -d 4h ops --"

@@ -47,7 +47,7 @@ fi;
 
 # Parse gpg agent info
 if ! pgrep gpg-agent > /dev/null 2>&1; then
-  gpg-agent --daemon --enable-ssh-support --write-env-file $HOME/.gpg-agent-info
+  gpg-agent --daemon --enable-ssh-support
 fi
 if [ -f "$HOME/.gpg-agent-info" ]; then
    . "$HOME/.gpg-agent-info"
@@ -55,3 +55,6 @@ if [ -f "$HOME/.gpg-agent-info" ]; then
    export SSH_AUTH_SOCK
    export SSH_AGENT_ID
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
