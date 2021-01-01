@@ -10,8 +10,6 @@ function error { echo -e "\e[00;31m=> Error: $1\e[00m"; }
 cd "$(dirname "$0")"
 notice "Updating repo.."
 git pull --rebase origin master
-git submodule init
-git submodule update
 read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) "
 echo -e "\e[01;34m=> Installing files..\e[00m"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
@@ -42,6 +40,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     fi
     ln -sf "$SUBL_SRC/$file" "$SUBL_TARGET/$file"
   done
+  # do vim setup
+  git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+  sh ~/.vim_runtime/install_awesome_vimrc.sh
+  # install starship prompt
+  curl -fsSL https://starship.rs/install.sh | bash
 fi
 source "$HOME/.bash_profile"
 notice "Done.."

@@ -1,21 +1,19 @@
 # Add to the $PATH
 export JAVA_HOME=$(/usr/libexec/java_home)
-export GRAILS_HOME='/usr/local/springsource/grails-1.3.7'
-export GROOVY_HOME="$(brew --prefix groovy)/libexec"
 export ANDROID_HOME='/usr/local/java/android-sdk-macosx'
 export ANDROID_NDK_HOME='/usr/local/java/android-ndk-r9'
-export ORACLE_HOME='/usr/local/oracle'
-export SONAR_RUNNER_HOME='/usr/local/sonar/sonar-runner-2.3'
-export AIR_HOME='/usr/local/AIRSDK_compiler'
 export GOPATH=$HOME/golang
 export GOROOT=$(brew --prefix go)/libexec
 export GEMPATH='/usr/local/lib/ruby/gems/2.7.0'
 
 # homebrew in general
 PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+PATH="/opt/homebrew/bin:/opt/homebrew/opt:$PATH"
+
 
 # home directory stuff
 PATH="$HOME/bin:$HOME/.scripts:$PATH"
+PATH="$HOME/.cargo/bin:$PATH"
 
 # ruby gems
 PATH="$(brew --prefix ruby)/bin:$PATH"
@@ -24,13 +22,10 @@ PATH=$PATH:$JAVA_HOME/bin
 PATH=$PATH:$GOPATH/bin
 PATH=$PATH:$GOROOT/bin
 PATH=$PATH:$GEMPATH/bin
-PATH=$PATH:$GRAILS_HOME/bin
 PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_NDK_HOME
-PATH=$PATH:$ORACLE_HOME
-PATH=$PATH:$SONAR_RUNNER_HOME/bin
-PATH=$PATH:$AIR_HOME/bin
 PATH=$PATH:/usr/local/heroku/bin
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+PATH=$PATH:/opt/homebrew/share/git-core/contrib/diff-highlight # diff-highlight from git contrib
 PATH=$PATH:/usr/local/share/git-core/contrib/diff-highlight # diff-highlight from git contrib
 
 export PATH
@@ -38,7 +33,7 @@ export PATH
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # The next line updates PATH for the Google Cloud SDK.
-source '/usr/local/google-cloud-sdk/path.bash.inc'
+# source '/usr/local/google-cloud-sdk/path.bash.inc'
 
 # The next line enables shell command completion for gcloud.
-source '/usr/local/google-cloud-sdk/completion.bash.inc'
+# source '/usr/local/google-cloud-sdk/completion.bash.inc'
