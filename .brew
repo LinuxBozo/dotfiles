@@ -20,6 +20,14 @@ brew install git
 brew install imagemagick
 brew install n
 brew install starship
+brew install goenv
+brew install pyenv
+brew install jenv
+brew install rbenv
+brew install tfenv
+brew install jq
+brew install shellcheck
+brew install gotop
 
 # Remove outdated versions from the cellar
 brew cleanup
