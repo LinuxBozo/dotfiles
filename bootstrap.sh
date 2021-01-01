@@ -26,9 +26,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
       ln -sf $CWD/$file $HOME/$file
     fi
   done
-  # Treat the following a little different
-  rm -rf $HOME/.git-prompt.sh
-  ln -sf $CWD/gitprompt/git-prompt.sh $HOME/.git-prompt.sh
 
   SUBL_SRC="$CWD/sublime2"
   SUBL_TARGET="$HOME/Library/Application\ Support/Sublime\ Text\ 2/Packages/User"
@@ -43,8 +40,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   # do vim setup
   git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
   sh ~/.vim_runtime/install_awesome_vimrc.sh
-  # install starship prompt
-  curl -fsSL https://starship.rs/install.sh | bash
+  git clone --depth=1 https://github.com/arcticicestudio/nord-vim.git ~/.vim_runtime/my_plugins/nord-vim
+  ln -sf $CWD/.vim/my_configs.vim ~/.vim_runtime/my_configs.vim
 fi
 source "$HOME/.bash_profile"
 notice "Done.."
