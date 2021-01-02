@@ -17,9 +17,9 @@ brew install bash
 # Install everything else
 brew install ack
 brew install git
-brew install imagemagick
 brew install n
 brew install starship
+brew install direnv
 brew install goenv
 brew install pyenv
 brew install jenv
@@ -28,6 +28,14 @@ brew install tfenv
 brew install jq
 brew install shellcheck
 brew install gotop
+brew install awscli
+brew install circleci
+brew install pre-commit
+
+# Casks
+brew install --cask aws-vault
+brew install --cask docker
+brew install --cask gpg-suite
 
 # Remove outdated versions from the cellar
 brew cleanup
