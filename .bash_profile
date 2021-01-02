@@ -1,8 +1,11 @@
+# shellcheck shell=bash
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
 for file in ~/.{exports,path,bash_prompt,aliases,functions,extra}; do
-	[ -r "$file" ] && source "$file"
+  # shellcheck source=/dev/null
+  [ -r "$file" ] && source "$file"
 done
 unset file
 
@@ -15,17 +18,17 @@ shopt -s cmdhist
 shopt -s histappend
 
 # Prepend cd to directory names automatically
-shopt -s autocd 2> /dev/null
+shopt -s autocd 2>/dev/null
 # Correct spelling errors during tab-completion
 shopt -s dirspell
 # Autocorrect typos in path names when using `cd`
-shopt -s cdspell 2> /dev/null
+shopt -s cdspell 2>/dev/null
 
 # Enable some Bash 4 features when possible:
 # * `autocd`, e.g. `**/qux` will enter `./foo/bar/baz/qux`
 # * Recursive globbing, e.g. `echo **/*.txt`
 for option in autocd globstar; do
-	shopt -s "$option" 2> /dev/null
+  shopt -s "$option" 2>/dev/null
 done
 
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
@@ -39,19 +42,23 @@ complete -W "NSGlobalDomain" defaults
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall
 
 # If possible, add tab completion for many more commands
-if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
-       source "$(brew --prefix)/share/bash-completion/bash_completion";
+if which brew >/dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+  # shellcheck source=/dev/null
+  source "$(brew --prefix)/share/bash-completion/bash_completion"
 elif [ -f /etc/bash_completion ]; then
-       source /etc/bash_completion;
-fi;
+  # shellcheck disable=SC1091
+  source /etc/bash_completion
+fi
 
 # Parse gpg agent info
 killall ssh-agent
-if ! pgrep gpg-agent > /dev/null 2>&1; then
-  eval $(gpg-agent --daemon --enable-ssh-support)
+if ! pgrep gpg-agent >/dev/null 2>&1; then
+  eval "$(gpg-agent --daemon --enable-ssh-support)"
 fi
 export SSH_AUTH_SOCK="${HOME}/.gnupg/S.gpg-agent.ssh"
 
+# shellcheck source=/dev/null
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
+# shellcheck source=/dev/null
 source "$HOME/.cargo/env"

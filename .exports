@@ -1,9 +1,11 @@
+# shellcheck shell=bash
+
 # Prefer US English and use UTF-8
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US"
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
-export PYTHONIOENCODING='UTF-8';
+export PYTHONIOENCODING="UTF-8"
 
 # Make vim the default editor
 export EDITOR="vim"
@@ -22,20 +24,20 @@ export HISTCONTROL="erasedups:ignoreboth"
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help:&:[ ]*:exit:ls:bg:fg:history:clear"
 
 # Enable persistent REPL history for `node`.
-export NODE_REPL_HISTORY=~/.node_history;
+export NODE_REPL_HISTORY=~/.node_history
 # Allow 32³ entries; the default is 1000.
-export NODE_REPL_HISTORY_SIZE='32768';
+export NODE_REPL_HISTORY_SIZE='32768'
 # Use sloppy mode by default, matching web browsers.
-export NODE_REPL_MODE='sloppy';
+export NODE_REPL_MODE='sloppy'
 
 export MAVEN_OPTS="-Xmx768m -XX:MaxPermSize=256m"
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
+export N_PREFIX="$HOME/n"
+[[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"
 export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
 
 # Link Homebrew casks in `/Applications` rather than `~/Applications`
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-export GPG_TTY=$(tty)
 
 # rbenv processing
 eval "$(rbenv init -)"

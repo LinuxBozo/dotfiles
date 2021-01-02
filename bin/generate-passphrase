@@ -1,8 +1,8 @@
 #!/bin/sh
 LENGTH=32
-if [ ! -z "$1" ]; then
+if [ -n "$1" ]; then
   LENGTH=$1
 fi
 #openssl rand -base64 "$((40 * 2))" | tr -d '\n' | sed -e 's/[^a-zA-Z0-9\+\=]//g' | cut -c1-$LENGTH
-cat /dev/urandom | LC_ALL=C tr -dc 'a-zA-Z0-9!@#\$%^&\*\(\)\+=_' | head -c $LENGTH
-
+# shellcheck disable=SC2002
+cat /dev/urandom | LC_ALL=C tr -dc 'a-zA-Z0-9!@#\$%^&\*\(\)\+=_' | head -c "$LENGTH"

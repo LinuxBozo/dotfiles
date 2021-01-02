@@ -1,3 +1,5 @@
+# shellcheck shell=bash
+
 # Easier navigation: .., ..., ...., ....., ~ and -
 alias ..="cd .."
 alias ...="cd ../.."
@@ -19,31 +21,34 @@ alias o="open"
 alias oo="open ."
 
 # Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
+if ls --color >/dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
 else # OS X `ls`
 	colorflag="-G"
 fi
 
 # List all files colorized in long format
+# shellcheck disable=SC2139
 alias l="ls -l ${colorflag}"
 
 # List all files colorized in long format, including dot files
+# shellcheck disable=SC2139
 alias la="ls -la ${colorflag}"
 
 # List only directories
 alias lsd='ls -l ${colorflag} | grep "^d"'
 
 # Always use color output for `ls`
+# shellcheck disable=SC2139
 alias ls="command ls ${colorflag}"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  # Mac OSX
-	test -r ~/.dir_colors && eval $(gdircolors ~/.dir_colors)
-	if gls --color > /dev/null 2>&1; then
+	# Mac OSX
+	test -r ~/.dir_colors && eval "$(gdircolors ~/.dir_colors)"
+	if gls --color >/dev/null 2>&1; then
 		alias ls="command gls --color=always"
 	fi
 else
-	test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
+	test -r ~/.dir_colors && eval "$(dircolors ~/.dir_colors)"
 fi
 
 # List all files colorized in long format, including dot files
@@ -83,10 +88,10 @@ alias sniff="sudo ngrep -d 'en1' -t '^(GET|POST) ' 'tcp and port 80'"
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Canonical hex dump; some systems have this symlinked
-command -v hd > /dev/null || alias hd="hexdump -C"
+command -v hd >/dev/null || alias hd="hexdump -C"
 
 # OS X has no `md5sum`, so use `md5` as a fallback
-command -v md5sum > /dev/null || alias md5sum="md5"
+command -v md5sum >/dev/null || alias md5sum="md5"
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
@@ -130,6 +135,7 @@ alias badge="tput bel"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+	# shellcheck disable=SC2139,2140
 	alias "$method"="curl -sL -X '$method'"
 done
 
@@ -138,12 +144,5 @@ alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
-alias dr-kube="export KUBECONFIG=~/.kube/prod-us-west-2.kubeconfig"
-alias prod-kube="export KUBECONFIG=~/.kube/prod-us-west-1.kubeconfig"
-alias np-kube="export KUBECONFIG=~/.kube/np-us-west-1.kubeconfig"
-alias simpleqa-kube="export KUBECONFIG=~/.kube/simple-qa.kubeconfig"
-alias simpleprod-kube="export KUBECONFIG=~/.kube/simple-prod.kubeconfig"
-alias eks-kube="export KUBECONFIG=~/.kube/eks-us-west-2.kubeconfig"
 alias crappaform="terraform"
 alias terraform-plan="terraform plan -lock=false"
-alias aws-mfa="aws-vault exec -d 4h ops --"
