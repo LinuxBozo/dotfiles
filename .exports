@@ -46,5 +46,8 @@ eval "$(rbenv init -)"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
+# manage go versions
+eval "$(goenv init -)"
+
 # set the default keychain for aws-vault
 export AWS_VAULT_KEYCHAIN_NAME=login
