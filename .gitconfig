@@ -5,7 +5,7 @@
 
 [alias]
 	# View the SHA, description, and history graph of the latest 20 commits
-	l = log -n 20 --pretty='%C(auto)%H %d %s [%C(white)%an%Creset - %C(cyan)%cr%Creset]' --graph
+	l = log -n 20 --pretty='%C(auto)%H %d %s [%C(yellow)%an%Creset - %C(black bold)%cr%Creset]' --graph
 	# View the current working tree status using the short format
 	s = status -sb
 	# Show the diff between the latest commit and the current state
@@ -50,10 +50,11 @@
 	attributesfile = ~/.gitattributes
 	autocrlf = input
 	quotepath = off
+	pager = diff-so-fancy | less --tabs=4 -RFX
 
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
-	ui = auto
+	ui = true
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -63,6 +64,8 @@
 	frag = magenta bold
 	old = red bold
 	new = green bold
+	commit = cyan
+	whitespace = red reverse
 [color "status"]
 	added = yellow
 	changed = green
@@ -100,10 +103,19 @@
 	smudge = git-lfs smudge %f
 	required = true
 [pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
 [interactive]
-    diffFilter = diff-highlight
+	diffFilter = diff-highlight
 [commit]
 	gpgSign = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[diff-so-fancy]
+	first-run = false
+[pull]
+	rebase = true
