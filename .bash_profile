@@ -51,7 +51,6 @@ elif [ -f /etc/bash_completion ]; then
 fi
 
 # Parse gpg agent info
-killall ssh-agent
 if ! pgrep gpg-agent >/dev/null 2>&1; then
   eval "$(gpg-agent --daemon --enable-ssh-support)"
 fi
