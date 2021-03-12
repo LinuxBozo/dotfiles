@@ -23,6 +23,7 @@ brew install diff-so-fancy
 brew install direnv
 brew install goenv
 brew install pyenv
+brew install pyenv-virtualenv
 brew install jenv
 brew install rbenv
 brew install tfenv
