@@ -10,7 +10,7 @@ function error() { echo -e "\e[00;31m=> Error: $1\e[00m"; }
 cd "$(dirname "$0")" || exit
 notice "Updating repo.."
 git pull --rebase origin master
-read -pr "This may overwrite existing files in your home directory. Are you sure? (y/n) "
+read -r -p "This may overwrite existing files in your home directory. Are you sure? (y/n) "
 echo -e "\e[01;34m=> Installing files..\e[00m"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   CWD=$(pwd)
