@@ -1,0 +1,206 @@
+#
+# NORD starship config
+#
+
+palette = "nord"
+
+#style = "bg:color_orange fg:color_fg0"
+
+# ---------------------------------------------------------------
+# [░▒▓](nord3)\
+format = """
+$os \
+$username[@](nord3)$hostname \
+[](bg:nord1 fg:nord0)\
+$directory\
+[](fg:nord1 bg:nord2)\
+$git_branch\
+$git_status\
+[](fg:nord2 bg:nord3)\
+$c\
+$python\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$nim\
+$rust\
+$scala\
+[](fg:nord3 bg:nord10)\
+$docker_context\
+[](fg:nord10 bg:nord9)\
+$time\
+[ ](fg:nord9)\
+\n
+$cmd_duration\
+$character\
+"""
+#add_newline = false
+
+[palettes.nord]
+nord0 = "#2E3440"  # used for background and area coloring
+nord1 = "#3B4252"  # used for elevated, more prominent or focused UI elements
+nord2 = "#434C5E"  # used to colorize the currently active text editor line as well as selection- and text highlighting
+nord3 = "#4C566A"  # used for UI elements like indent- and wrap guide marker
+nord4 = "#D8DEE9"  # used for UI elements like the text editor caret
+nord5 = "#E5E9F0"  # used for more subtle/inconspicuous UI text elements
+nord6 = "#ECEFF4"  # used for elevated UI text elements that require more visual attention
+nord7 = "#8FBCBB"  # used for UI elements that should, next to the primary accent color nord8, stand out and get more visual attention
+nord8 = "#88C0D0"  # used for primary UI elements with main usage purposes that require the most visual attention
+nord9 = "#81A1C1"  # used for secondary UI elements that also require more visual attention than other elements
+nord10 = "#5E81AC" # used for tertiary UI elements that require more visual attention than default elements
+nord11 = "#BF616A" # used for UI elements that are rendering error states like linter markers and the highlighting of Git diff deletions
+nord12 = "#D08770" # rarely used for UI elements, but it may indicate a more advanced or dangerous functionality
+nord13 = "#EBCB8B" # used for UI elements that are rendering warning states like linter markers and the highlighting of Git diff modifications
+nord14 = "#A3BE8C" # used for UI elements that are rendering success states and visualizations and the highlighting of Git diff additions
+nord15 = "#B48EAD" # rarely used for UI elements, but it may indicate a more uncommon functionality
+
+[line_break]
+disabled = false
+
+[username]
+show_always = true
+style_user = "bg:nord0"
+style_root = "bg:nord15"
+format = '[$user]($style)'
+disabled = false
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style)"
+trim_at = "-"
+style = "bold nord10"
+disabled = false
+
+# [os]
+# style = "bg:#9A348E"
+[os]
+disabled = false
+style = "nord9"
+
+[os.symbols]
+Windows = "󰍲"
+Ubuntu = "󰕈"
+SUSE = ""
+Raspbian = "󰐿"
+Mint = "󰣭"
+Macos = "󰀵"
+Manjaro = ""
+Linux = "󰌽"
+Gentoo = "󰣨"
+Fedora = "󰣛"
+Alpine = ""
+Amazon = ""
+Android = ""
+Arch = "󰣇"
+Artix = "󰣇"
+EndeavourOS = ""
+CentOS = ""
+Debian = "󰣚"
+Redhat = "󱄛"
+RedHatEnterprise = "󱄛"
+Pop = ""
+
+[directory]
+style = "bg:nord1"
+format = "[ $path ]($style)"
+truncation_length = 5
+truncation_symbol = " /"
+
+[directory.substitutions]
+"Documents" = "󱔗 "
+"Downloads" = " "
+"Music" = " "
+"Pictures" = " "
+
+[c]
+symbol = " "
+style = "bg:nord3"
+format = '[ $symbol ($version) ]($style)'
+
+[python]
+symbol = " "
+style = "bg:nord3"
+format = '[ $symbol ($version) ]($style)'
+
+[docker_context]
+symbol = " "
+style = "bg:nord10"
+format = '[ $symbol $context ]($style) $path'
+
+[elixir]
+symbol = " "
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[elm]
+symbol = " "
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[git_branch]
+symbol = ""
+style = "bg:nord2"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:nord2"
+format = '[$all_status$ahead_behind ]($style)'
+
+[golang]
+symbol = " "
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[haskell]
+symbol = " "
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[java]
+symbol = " "
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[julia]
+symbol = " "
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[nim]
+symbol = " "
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[rust]
+symbol = ""
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[scala]
+symbol = " "
+style = "bg:nord2"
+format = '[ $symbol ($version) ]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:nord9"
+format = '[   $time ]($style)'
+
+[character]
+success_symbol = '[➜ ](nord9)'
+error_symbol = '[➜ ](bold nord11)'
+#style = "bg:#6272a4"
+
+[cmd_duration]
+min_time = 500
+format = '[$duration](nord9) '
