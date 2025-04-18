@@ -1,7 +1,7 @@
 [user]
 	name = M. Adam Kendall
 	email = linuxbozo@gmail.com
-	signingkey = linuxbozo@gmail.com
+	signingkey = A87FAEEAE43BF9C8
 
 [alias]
 	# View the SHA, description, and history graph of the latest 20 commits
@@ -109,7 +109,7 @@
 [interactive]
 	diffFilter = diff-highlight
 [commit]
-	gpgSign = true
+	gpgSign = false
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
@@ -119,3 +119,5 @@
 	first-run = false
 [pull]
 	rebase = true
+[gpg]
+	program = /usr/bin/gpg

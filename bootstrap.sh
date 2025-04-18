@@ -14,7 +14,7 @@ read -r -p "This may overwrite existing files in your home directory. Are you su
 echo -e "\e[01;34m=> Installing files..\e[00m"
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   CWD=$(pwd)
-  excludes=".git gitprompt sublime2 .DS_Store bootstrap.sh README.md"
+  excludes=".config .git gitprompt sublime2 .DS_Store bootstrap.sh README.md"
   for file in $(ls -A); do
     if ! echo "$excludes" | grep "$file" >/dev/null; then
       if [ -e "$HOME/$file" ]; then
@@ -24,14 +24,23 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     fi
   done
 
-  SUBL_SRC="$CWD/sublime2"
-  SUBL_TARGET="$HOME/Library/Application\ Support/Sublime\ Text\ 2/Packages/User"
-  for file in $(ls -A $SUBL_SRC); do
-    if [ -e "$SUBL_TARGET/$file" ]; then
-      rm -rf "${SUBL_TARGET:?}/$file"
+  CONF_SRC="$CWD/.config"
+  CONF_TARGET="$HOME/.config"
+  for file in $(ls -A $CONF_SRC); do
+    if [ -e "$CONF_TARGET/$file" ]; then
+      rm -rf "${CONF_TARGET:?}/$file"
     fi
-    ln -sf "$SUBL_SRC/$file" "$SUBL_TARGET/$file"
+    ln -sf "$CONF_SRC/$file" "$CONF_TARGET/$file"
   done
+
+  #SUBL_SRC="$CWD/sublime2"
+  #SUBL_TARGET="$HOME/Library/Application\ Support/Sublime\ Text\ 2/Packages/User"
+  #for file in $(ls -A $SUBL_SRC); do
+    #if [ -e "$SUBL_TARGET/$file" ]; then
+      #rm -rf "${SUBL_TARGET:?}/$file"
+    #fi
+    #ln -sf "$SUBL_SRC/$file" "$SUBL_TARGET/$file"
+  #done
   # do vim setup
   git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
   sh ~/.vim_runtime/install_awesome_vimrc.sh
